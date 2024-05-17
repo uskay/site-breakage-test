@@ -58,7 +58,7 @@ Comprehensive user journey details accessible here: [Link to slides](https://doc
 Things start to break when 3P cookies gets disabled.
 
 ![Snippet](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/Screenshot%202024-05-17%20at%2015.47.36.png?v=1715928481915)
-Comprehensive user journey details accessible here: [Link to slides](https://docs.google.com/presentation/d/e/2PACX-1vQBl7SyHV3J_fu9JhRk9sMvu3ayV1guSnenFR8hliTpMA_bk6YAeumPs2nCkB122X8Ysoo1B61SWINz/pub?start=false&loop=false&delayms=3000#slide=id.g2ddcd3e2fe5_0_117)
+Comprehensive breakage details accessible here: [Link to slides](https://docs.google.com/presentation/d/e/2PACX-1vQBl7SyHV3J_fu9JhRk9sMvu3ayV1guSnenFR8hliTpMA_bk6YAeumPs2nCkB122X8Ysoo1B61SWINz/pub?start=false&loop=false&delayms=3000#slide=id.g2ddcd3e2fe5_0_117)
 
 ## How to fix
 1. Trackers
