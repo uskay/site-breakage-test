@@ -1,0 +1,125 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  html, body {
+    font-family: Segoe UI, system-ui, -apple-system, sans-serif;
+    margin: 0px;
+    padding: 0px;
+  }
+  .widget {
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    .widget-title {
+      width: 100%;
+      height: 50px;
+      background-color: black;
+      border-radius: 5px 5px 0px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    .widget-chat {
+      .chat-bubble[data-position="left"] {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        .chat-message {
+          background-color: lightcyan;
+        }
+      }
+      .chat-bubble[data-position="right"] {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+      }
+      .chat-message {
+        padding: 10px;
+        margin: 5px 10px;
+        background-color: white;
+        width: fit-content;
+        border-radius: 10px;
+        max-width: 230px;
+        overflow: hidden;
+      }
+    }
+    .widget-form {
+      position: absolute;
+      width: 96%;
+      bottom: 10px;
+      height: 40px;
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      grid-gap:5px;
+      margin-left:2%;
+      margin-right:2%;
+      & input[type="submit"] {
+        cursor: pointer;
+      }
+    }
+  }
+  
+  </style>
+  <div class="widget">
+    <div class="widget-title">Customer Support Chat</div>
+    <div class="widget-chat"></div>
+    <div class="widget-form">
+      <input type="text">
+      <input type="submit" value="send">
+    </div>
+  </div>
+  <script>
+    let chatLog = new Array();
+    const convert2Emoji = text => {
+      const emojiMap = {
+        'happy': '😊',
+        'wink': '😉',
+        'yummy': '😋',
+        'laugh': '😆',
+        'smile': '😁'
+      }
+      const emojiResponse = text.split('|').map(expression => emojiMap[expression]);
+      return emojiResponse.join('');
+    }
+    const createMessage = (position, text) => {
+      const chat = document.querySelector('.widget-chat');
+      let chatBubble = document.createElement('div');
+      chatBubble.classList.add('chat-bubble');
+      chatBubble.setAttribute('data-position', position);
+      const chatRequest = document.createElement('div');
+      if (position == 'left') {
+        text = convert2Emoji(text);
+      }
+      chatRequest.innerText = text;
+      chatRequest.classList.add('chat-message');    
+      chatBubble.append(chatRequest);
+      chat.append(chatBubble);
+    }
+    const loadChatLog = async _ => {
+      const res = await fetch('/chat-log');
+      const text = await res.text();
+      const decodedText = atob(text);
+      if (decodedText) {
+        chatLog = JSON.parse(decodedText);
+        chatLog.forEach(message => {
+          createMessage(message.position, message.text);
+        });
+      }
+    }
+    loadChatLog();
+
+    document.querySelector('input[type="submit"]').addEventListener('click', async evt => {
+      let message = document.querySelector('input[type="text"]').value;
+      if (!message) {
+        return;
+      }
+      createMessage('right', message);
+      const res = await fetch(`/chat-message?message=${message}`);
+      const text = await res.text();
+      console.log('text', text);
+      createMessage('left', text);
+    });    
+  </script>

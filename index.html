@@ -1,0 +1,164 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  html,
+  body {
+    font-family: Segoe UI, system-ui, -apple-system, sans-serif;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-list {
+    width: 80%;
+    max-width: 700px;
+
+    .product-row {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+
+      & div:nth-child(1),
+      & div:nth-child(2) {
+        margin-top: 75%;
+        background-color: lightslategray;
+        position: relative;
+        top: -100%;
+        height: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      & div:nth-child(1):hover,
+      & div:nth-child(2):hover {
+        opacity: 0.7;
+      }
+
+      & div:nth-child(3),
+      & div:nth-child(4) {
+        text-align: center;
+      }
+    }
+  }
+
+  .shop-link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 0px 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color: aquamarine;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border: 5px solid black;
+  }
+
+  .shop-link:hover {
+    border: 5px solid blue;
+  }
+
+  .footer {
+    height: 50px;
+  }
+</style>
+<div class="header">
+  <h1>🛍️ test-ecomm-site.com</h1>
+</div>
+<div class="main">
+  <div class="product-list">
+    <div class="product-row">
+      <a href="product" data-product="Product A" data-price="$30">
+        <div></div>
+      </a>
+      <a href="product" data-product="Product B" data-price="$35">
+        <div></div>
+      </a>
+      <div>Product A <span class="price">$30</span></div>
+      <div>Product B <span class="price">$35</span></div>
+    </div>
+    <div class="product-row">
+      <a href="product" data-product="Product C" data-price="$25">
+        <div></div>
+      </a>
+      <a href="product" data-product="Product D" data-price="$40">
+        <div></div>
+      </a>
+      <div>Product C <span class="price">$25</span></div>
+      <div>Product D <span class="price">$40</span></div>
+    </div>
+    <div class="product-row">
+      <a href="product" data-product="Product E" data-price="$15">
+        <div></div>
+      </a>
+      <a href="product" data-product="Product F" data-price="$45">
+        <div></div>
+      </a>
+      <div>Product E <span class="price">$15</span></div>
+      <div>Product F <span class="price">$45</span></div>
+    </div>
+  </div>
+</div>
+<div class="shop-link">Link to my other shop</div>
+<div class="footer"></div>
+<script>
+  const searchParams = new URLSearchParams(location.search);
+  const siteName = searchParams.get('site');
+  if (siteName) {
+    document.querySelector('h1').innerText = siteName;
+    document.body.style.backgroundColor = 'lightpink';
+    [...document.querySelectorAll('.product-row')].forEach(row => {
+      [...row.querySelectorAll('a > div')].forEach(elm => {
+        elm.style.backgroundColor = 'lightcoral';
+      });
+    });
+    document.querySelector('.shop-link').style.backgroundColor = 'deeppink';
+    document.querySelector('.shop-link').style.color = 'white';
+  }
+  [...document.querySelectorAll('a')].forEach(elm => {
+    elm.addEventListener('click', evt => {
+      evt.preventDefault();
+      console.log(evt.currentTarget);
+      const href = evt.currentTarget.href;
+      const productName = evt.currentTarget.getAttribute('data-product');
+      const price = evt.currentTarget.getAttribute('data-price');
+      location.href = `${href}?product=${productName}&price=${price}${siteName ? '&site=' + siteName : ''}`;
+    });
+  });
+  document.querySelector('.shop-link').addEventListener('click', evt => {
+    if (siteName) {
+      location.href = 'https://test-ecomm-site.com';
+    } else {
+      location.href = 'https://test-another-site.com?site=🛒 test-another-site.com';
+    }
+  });
+</script>
+
+<!-- chat widget-->
+<style>
+  iframe {
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    border: none;
+  }
+</style>
+<iframe src="https://test-chat.com/chat"></iframe>
+
+<!-- trackers-->
+<script src="http://my-site-tracker.com/track"></script>
+<script src="http://some-third-party-tracker.com/track"></script>
