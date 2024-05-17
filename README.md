@@ -68,11 +68,13 @@ Comprehensive user journey details accessible here: [Link to slides](https://doc
 2. Chat widget
 - Considering the chat widget functional requirements, it would be mandatory to stitch session across pages under a same site but it might not be necessary to do that for cross sites.
 - If that was the case, [CHIPS (Cookies Having Independent Partitioned State)](https://developers.google.com/privacy-sandbox/3pcd/chips) will solve the issue.
+
 ![Snippet](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/Screenshot%202024-05-17%20at%2015.59.47.png?v=1715929199245)
 
 3. Payment widget
 - We'd ideally want this payment widget to work consistently across sites keepin the user data for easier & faster payments (no one likes to repeatedly input their payment information over and over again!).
 - Since the widget is working as an iframe, [Storage Access API](https://developers.google.com/privacy-sandbox/3pcd/storage-access-api) will solve this. It will let the 3P iframe access its own 3P cookie. The caveat is that A) user needs to explicity allow the widget to access its cookie by consenting via a system prompt dialog which requires user gesture, B) with the prerequisite of the user directly accessing the embedded site as a top level window and C) if the user declines, the API won't work for (TODO: need to check its spec & the Chrome implementation).
+
 ![Snippet](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/Screenshot%202024-05-17%20at%2016.20.31.png?v=1715930448796)
 
 ## Disclaimer
