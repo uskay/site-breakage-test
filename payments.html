@@ -157,9 +157,11 @@
       getUserInfo();
     }
   }
-  
-  // getStorageAccess();
-  getUserInfo();
+  if (location.search.includes('should-fix-3pcd=true')) {
+    getStorageAccess();
+  } else {
+    getUserInfo();
+  } 
   document.querySelector('button[id="pay"]').addEventListener('click', async _ => {
     const param = [];
     [...document.querySelectorAll('input[type="text"]')].forEach(elm => {

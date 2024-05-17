@@ -52,7 +52,15 @@
       }
     </style>
     <!-- payment widget -->
-    <iframe src="https://test-payments.com/payments"></iframe>
+    <script>
+      let param = '';
+      if (document.cookie.includes('should-fix-3pcd=true')){
+        param = 'should-fix-3pcd=true';
+      }
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://test-payments.com/payments?${param}`;
+      document.querySelector('.purchase').appendChild(iframe);
+    </script>
   </div>
 </div>
 <div class="footer"></div>
@@ -72,5 +80,5 @@
   }
 </script>
 <!-- trackers-->
-<script src="http://my-site-tracker.com/track"></script>
-<script src="http://some-third-party-tracker.com/track"></script>
+<script src="https://my-site-tracker.com/track"></script>
+<script src="https://some-third-party-tracker.com/track"></script>
