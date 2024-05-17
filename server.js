@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
-const key = fs.readFileSync(`${__dirname}/cert/key.pem`);
-const cert = fs.readFileSync(`${__dirname}/cert/cert.pem`);
+const key = fs.readFileSync(`${__dirname}/cert-self-signed-dummy/key.pem`);
+const cert = fs.readFileSync(`${__dirname}/cert-self-signed-dummy/cert.pem`);
 const https = require('https');
 
 const settings = new Map();
