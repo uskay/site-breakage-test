@@ -176,6 +176,9 @@
     // This is just a demo (don't do this in production). Simple Base64 encoding / decoding of user data.
     const sessionData = btoa(param.join('&'));
     await fetch(`/pay?payment-session=${btoa(param.join('&'))}`);
-    alert('Payment complete! Thanks for purchasing our prouduct!');
+    console.log(window.parent);
+    window.parent.postMessage({
+      status: "payment-complete"
+    }, "*");
   });
 </script>

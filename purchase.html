@@ -60,6 +60,13 @@
       const iframe = document.createElement('iframe');
       iframe.src = `https://test-payments.com/payments?${param}`;
       document.querySelector('.purchase').appendChild(iframe);
+      window.addEventListener('message', evt => {
+        if (evt.data.status == 'payment-complete') {
+          alert('Payment complete! Thanks for purchasing our prouduct!');
+          // go back to top page
+          location.href = '/';
+        }
+      });
     </script>
   </div>
 </div>
