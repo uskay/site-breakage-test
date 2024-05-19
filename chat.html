@@ -119,7 +119,6 @@
       createMessage('right', message);
       const res = await fetch(`/chat-message?message=${message}`);
       const text = await res.text();
-      console.log('text', text);
       createMessage('left', text);
     });    
   </script>

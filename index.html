@@ -130,7 +130,6 @@
   [...document.querySelectorAll('a')].forEach(elm => {
     elm.addEventListener('click', evt => {
       evt.preventDefault();
-      console.log(evt.currentTarget);
       const href = evt.currentTarget.href;
       const productName = evt.currentTarget.getAttribute('data-product');
       const price = evt.currentTarget.getAttribute('data-price');
