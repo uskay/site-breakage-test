@@ -1,4 +1,4 @@
-# site-breakage-test
+# site-breakage-test (v0.1.0)
 
 A demo site to understand how [third-party cookie deprecation (3PCD)](https://developers.google.com/privacy-sandbox/3pcd) impacts sites.
 
@@ -79,7 +79,7 @@ Comprehensive breakage details accessible here: [Link to slides](https://docs.go
 ![Snippet](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/Screenshot%202024-05-17%20at%2016.20.31.png?v=1715930448796)
 
 ## Disclaimer
-This code base is built for demo purpose only (non production ready code). Please reference as one example of how View Transitions API can be used.
+This code base is built for demo purpose only (non production ready code). Please reference as one of the examples to understand what site breakages could look like.
 
 ---
 
