@@ -1,4 +1,4 @@
-# site-breakage-test (v0.1.0)
+# site-breakage-test (v0.1.0 ― a WIP prototype)
 
 A demo site to understand how [third-party cookie deprecation (3PCD)](https://developers.google.com/privacy-sandbox/3pcd) impacts sites.
 
