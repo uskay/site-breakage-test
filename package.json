@@ -1,10 +1,9 @@
 {
   "name": "site-breakage-regression-test",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A demo site to understand how third-party cookie deprecation (3PCD) impacts sites.",
+  "main": "not-a-module-and-do-not-have-main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "server-3pcdfix": "node server.js --3pcdfix=true"
   },
